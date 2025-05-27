@@ -12,13 +12,13 @@ function ThemedAppWrapper() {
   const { currentStyle } = useContext(ThemeContext);
 
   return (
-    <div style={{ ...currentStyle.base, padding: "2em" }}>
+    <div style={{ ...currentStyle.base}}>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/qualification' element={<Qualification />} />
-          <Route path='/skills' element={<Skills />} />
-
+          {/* <Route path='/qualification' element={<Qualification />} />
+          <Route path='/skills' element={<Skills />} /> */}
+      
         </Routes>
       </BrowserRouter>
     </div>

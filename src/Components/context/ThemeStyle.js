@@ -1,7 +1,7 @@
 export const styles = {
     light: {
         base: {
-            backgroundColor: "#ffffff",
+            backgroundColor: "rgb(242, 242, 242)",
             color: "#000000",
         },
         button: {

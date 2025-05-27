@@ -21,37 +21,13 @@ function NavBar() {
                 <Navbar.Brand style={{ ...currentStyle.base, fontWeight: "bold", fontSize: "24px" }}>
                     Aqsa Mahmood
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" style={currentStyle.base} />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: "grey" }} />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto d-flex gap-3">
-                        <NavLink to="/" style={{ ...navLinkStyle, color: currentStyle.base.color }}>Intro</NavLink>
-                        <NavLink
-                            to="/qualification"
-                            style={({ isActive }) => ({
-                                ...navLinkStyle,
-                                color: isActive ? "#007bff" : currentStyle.base.color
-                            })}
-                        >
-                            Qualification
-                        </NavLink>
-                        <NavLink
-                            to="/skills"
-                            style={({ isActive }) => ({
-                                ...navLinkStyle,
-                                color: isActive ? "#007bff" : currentStyle.base.color
-                            })}
-                        >
-                            Skills
-                        </NavLink>
-                        <NavLink
-                            to="/qualification"
-                            style={({ isActive }) => ({
-                                ...navLinkStyle,
-                                color: isActive ? "#007bff" : currentStyle.base.color
-                            })}
-                        >
-                            Contact Info
-                        </NavLink>
+                        <a style={{textDecoration:"none", ...currentStyle.base}} href='#intro'>Intro</a>
+                        <a style={{textDecoration:"none", ...currentStyle.base}}  href='#skills'>Skills</a>
+                        <a style={{textDecoration:"none", ...currentStyle.base}}  href='#intro'>Contact</a>
+
                     </Nav>
                     <ThemeSelector />
                 </Navbar.Collapse>

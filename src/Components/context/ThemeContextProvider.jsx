@@ -4,11 +4,10 @@ import { styles } from './ThemeStyle'
 
 const ThemeContextProvider = ({ children }) => {
 
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("dark")
   const currentStyle = styles[theme]
-  
-  console.log(theme);
 
+  console.log(theme);
   return (
     <ThemeContext.Provider value={{ theme, setTheme, currentStyle }}>
       <>
