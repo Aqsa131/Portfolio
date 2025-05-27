@@ -13,6 +13,7 @@ import { faReact } from '@fortawesome/free-brands-svg-icons';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import Forms from './Forms';
 
 const Home = () => {
   const { currentStyle } = useContext(ThemeContext);
@@ -75,8 +76,8 @@ const Home = () => {
             <h1>Aqsa Mahmood.</h1>
             <p style={{ textAlign: "center" }}>FRONT-END WEB & APP DEVELOPER</p>
             <div className={style.links}>
-              <a href="https://github.com/Aqsa131" target='_blank'><FontAwesomeIcon style={{fontSize:"30px"}} icon={faGithub} /></a>
-              <a href="https://www.linkedin.com/in/aqsa-mahmood-ba3ba2321/" target='_blank'><FontAwesomeIcon style={{fontSize:"30px"}} icon={faLinkedinIn} /></a>
+              <a href="https://github.com/Aqsa131" target='_blank'><FontAwesomeIcon style={{ fontSize: "30px" }} icon={faGithub} /></a>
+              <a href="https://www.linkedin.com/in/aqsa-mahmood-ba3ba2321/" target='_blank'><FontAwesomeIcon style={{ fontSize: "30px" }} icon={faLinkedinIn} /></a>
             </div>
 
           </div>
@@ -140,41 +141,8 @@ const Home = () => {
           ></path>
         </svg>
       </div>
-      {/* PORTFOLIO */}
-      {/* <h1 className='m-5'>Protfolio</h1>
-      <div className="container">
-        <div className="row g-5">
-          <div className="col-md-4">
-            <a href="#">
-              <img
-                style={{ maxWidth: "500px", width: "100%" }}
-                src="https://marketplace.canva.com/EAFwckKNjDE/2/0/1600w/canva-black-white-grayscale-portfolio-presentation-vzScEqAI__M.jpg"
-                alt="Image 1"
-              />
-            </a>
-          </div>
-          <div className="col-md-4">
-            <a href="#">
-              <img
-                style={{ maxWidth: "500px", }}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DOaj46rcFLt82PmqPiEjpS1RD65UdPNjxA&s"
-                alt="Image 2"
-              />
-            </a>
-          </div>
-          <div className="col-md-4">
-            <a href="#">
-              <img
-                style={{ maxWidth: "500px", }}
-                src="https://play-lh.googleusercontent.com/s4pK0OW7juF4Q7hz3mz05zO1xZIT6pAH2Lt8KL3kXtvGGuuGeT91iVeTc4Rgxb9v4A=w240-h480-rw"
-                alt="Image 3"
-              />
-            </a>
-          </div>
-        </div>
-      </div> */}
-
-      <div className="container mt-5 m-auto containerRelative mt1-5 " id='skills'>
+      {/* WHAT I CAN DO */}
+      <div className="container-fluid mt-5 m-auto containerRelative mt1-5 " id='skills'>
         <h2 className="text-3xl font-bold mb-4 text-center mt-4">WHAT I CAN DO</h2>
         <div className={style.cardHome}>
           {
@@ -187,10 +155,30 @@ const Home = () => {
             })
           }
         </div>
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" className={style.bottomWave}>
+          <path
+            fill="#ffffff"
+            d="M0,160 C480,320 960,0 1440,160 L1440,320 L0,320 Z"
+          ></path>
+        </svg>
       </div>
       {/* FOOTER */}
-      <div className="container fluid">
-
+      <div className="container  my-5 " id='contact'>
+        <div className="row g-5">
+          <div className="col-md-4">
+            <h3 className="text-3xl font-bold mb-4 my-4">GET IN TOUCH</h3>
+            <h5 className='mt-5'>Address</h5>
+            <p>Karachi, Pakistan</p>
+            <h5>E-mail</h5>
+            <p>sheikhaqsa59@gmail.com</p>
+            <h5>Phone</h5>
+            <p>+92 333 2126104</p>
+          </div>
+          <div className="col-md-8">
+            <h3 className="text-3xl font-bold mb-4 my-4">SEND US A MESSAGE</h3>
+              <Forms/>
+          </div>
+        </div>
       </div>
       <br /><br /><br /><br /> <br /><br /><br /><br />
 

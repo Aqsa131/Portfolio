@@ -26,8 +26,7 @@ function NavBar() {
                     <Nav className="me-auto d-flex gap-3">
                         <a style={{textDecoration:"none", ...currentStyle.base}} href='#intro'>Intro</a>
                         <a style={{textDecoration:"none", ...currentStyle.base}}  href='#skills'>Skills</a>
-                        <a style={{textDecoration:"none", ...currentStyle.base}}  href='#intro'>Contact</a>
-
+                        <a style={{textDecoration:"none", ...currentStyle.base}}  href='#contact'>Contact</a>
                     </Nav>
                     <ThemeSelector />
                 </Navbar.Collapse>
