@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import NavBar from './Nav';
 import style from "../css/home.module.css";
 import bgImg from "../assets/background.jpg"
@@ -13,7 +13,11 @@ import { faReact } from '@fortawesome/free-brands-svg-icons';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import Forms from './Forms';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const Home = () => {
   const { currentStyle } = useContext(ThemeContext);
@@ -26,46 +30,80 @@ const Home = () => {
   const info = [
     { label: "name", value: "Aqsa Mahmood" },
     { label: "email-address", value: "sheikhaqsa59@gmail.com" },
-    { label: "contact", value: "03332126104" },
     { label: "Address", value: "karachi, Pakistan" },
 
   ]
   const cardData = [
     {
       title: "Web Designing",
-      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi error",
+      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi handlers",
       icon: faCode
     },
     {
       title: "Responsive Design",
-      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi error",
+      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi cursor",
       icon: faMobileScreen
     },
     {
       title: "React",
-      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi error",
+      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi space",
       icon: faReact
     },
     {
       title: "Firebase",
-      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi error",
+      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi specefic",
       icon: faFire
     },
     {
       title: "Graphic Desinging",
-      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi error",
+      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi controller",
       icon: faChartSimple
     },
     {
       title: "Content Writing",
-      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi error",
+      discription: "Amet illo quos cumque reiciendis vitae dolorum Quas delectus corporis nihil omnis nam labore excepturi debugger",
       icon: faCreativeCommonsShare
     },
   ]
+  // SCROLL BEHAVIOUR
+  const heroRef = useRef(null);
+  const [showArrow, setShowArrow] = useState(false);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true
+    });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowArrow(!entry.isIntersecting); // hide arrow when in view
+      },
+      {
+        root: null,
+        threshold: 0.3,
+      }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => {
+      if (heroRef.current) {
+        observer.unobserve(heroRef.current);
+      }
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   return (
     <>
-      <NavBar />
-      <div className={`${style.mainWrapper}`}>
+      <NavBar data-aos="fade-up" />
+      <div className={`${style.mainWrapper}`} ref={heroRef} data-aos="fade-up">
         <div
           className={style.main}
           style={{
@@ -92,7 +130,7 @@ const Home = () => {
       <div style={{ backgroundColor: "#fff", padding: "20px", textAlign: "center" }}>
       </div>
       {/* ABOUT ME */}
-      <div className='container-fluid text-center containerRelative mt1-5' id='intro'  >
+      <div className='container-fluid text-center containerRelative mt1-5' id='intro' data-aos="fade-up" >
         <h1 className='m-5'>About Me</h1>
         <p>To leverage my expertise in HTML, CSS, JavaScript, and modern frontend frameworks to design and develop
           intuitive, responsive, and visually engaging user interfaces. Passionate about enhancing user experiences
@@ -142,7 +180,7 @@ const Home = () => {
         </svg>
       </div>
       {/* WHAT I CAN DO */}
-      <div className="container-fluid mt-5 m-auto containerRelative mt1-5 " id='skills'>
+      <div className="container-fluid mt-5 m-auto containerRelative mt1-5 " id='skills' data-aos="fade-up">
         <h2 className="text-3xl font-bold mb-4 text-center mt-4">WHAT I CAN DO</h2>
         <div className={style.cardHome}>
           {
@@ -163,7 +201,7 @@ const Home = () => {
         </svg>
       </div>
       {/* FOOTER */}
-      <div className="container  my-5 " id='contact'>
+      <div className="container  my-5 " id='contact' data-aos="fade-up">
         <div className="row g-5">
           <div className="col-md-4">
             <h3 className="text-3xl font-bold mb-4 my-4">GET IN TOUCH</h3>
@@ -176,11 +214,18 @@ const Home = () => {
           </div>
           <div className="col-md-8">
             <h3 className="text-3xl font-bold mb-4 my-4">SEND US A MESSAGE</h3>
-              <Forms/>
+            <Forms />
           </div>
         </div>
       </div>
-      <br /><br /><br /><br /> <br /><br /><br /><br />
+      {/* Arrow button */}
+      {showArrow && (
+        <button className={style.arrowBtn}
+          onClick={scrollToTop} >
+          <FontAwesomeIcon icon={faArrowUp} style={{ color: 'gray', textAlign: "center" }} />
+        </button>
+      )}
+      <br />
 
     </>
   );
